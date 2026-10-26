@@ -20,6 +20,19 @@ If you want to build the gem from source:
 gem build payrex-ruby.gemspec
 ```
 
+## Development tests
+
+Run the packaging regression tests before publishing a release:
+
+```sh
+gem install minitest -v "~> 5.0"
+ruby test/gem_package_test.rb
+```
+
+The tests build and install the gem in a temporary directory, then load that
+installed artifact without the source checkout on the load path. No API keys
+or network requests to PayRex are needed.
+
 ## Getting Started
 
 Simple usage looks like:

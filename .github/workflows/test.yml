@@ -1,0 +1,25 @@
+name: Test gem package
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  packaging:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ["3.2", "3.3", "3.4", "4.0"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install test dependency
+        run: gem install minitest -v "~> 5.0" --no-document
+      - name: Build, install, and load gem package
+        run: ruby test/gem_package_test.rb

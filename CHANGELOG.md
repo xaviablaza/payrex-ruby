@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.7.9] - Unreleased
+
+- Include the SetupIntent and PaymentMethod entities and SetupIntentsService in the gem package, fixing `LoadError` when requiring the published gem.
+- Add a regression test that builds, installs, and loads the packaged gem outside the source checkout.
+
 ## [1.7.8] - 2026-06-03
 
 Utilize customer instead of customer_id in customer sessions.
